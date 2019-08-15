@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="1045a569-2e87-446c-8374-21b85502aa70" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="https://swapi.co TestCase 1" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" zephyrTestName="" zephyrTestId="" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="1045a569-2e87-446c-8374-21b85502aa70fileName">https%3A%2F%2Fswapi.co-TestCase-1</con:setting>
+    <con:setting id="IncludeOverview">true</con:setting>
+    <con:setting id="IncludeResults">true</con:setting>
+    <con:setting id="FlowLayout">false</con:setting>
+    <con:setting id="ErrorDetails">true</con:setting>
+    <con:setting id="IncludeCoverage">true</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="datasource" name="Number" id="82635c13-9600-4686-be12-fe999ee6aeed">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Data Generator">
+        <con:configuration>
+          <generatedDataCount>10</generatedDataCount>
+          <generatorsTotalNumber>1</generatorsTotalNumber>
+          <lastSelectedProperty>0</lastSelectedProperty>
+          <GeneratorType0>INT</GeneratorType0>
+          <PropertyName0>people</PropertyName0>
+          <repetitionCountpeople>0</repetitionCountpeople>
+          <repeatValuespeople>false</repeatValuespeople>
+          <IntegerDataGeneratorMinValuepeople>1</IntegerDataGeneratorMinValuepeople>
+          <IntegerDataGeneratorMaxValuepeople>87</IntegerDataGeneratorMaxValuepeople>
+          <IntegerDataGeneratorStepValuepeople>1</IntegerDataGeneratorStepValuepeople>
+          <IntegerDataGeneratorConsequentValuespeople>false</IntegerDataGeneratorConsequentValuespeople>
+          <escapeSpaceSequence/>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>people</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Request 1" id="65d94989-3ab2-4a06-8737-1681b51da2fd">
+    <con:settings/>
+    <con:config service="https://swapi.co" resourcePath="/api/people/{person}/" methodName="1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Request 1" id="5cb63568-d654-4002-a255-a30706d9c5f4" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://swapi.co</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://swapi.co/api/people/1/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="d5ff285a-cb68-4418-8770-8be291405f6f" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="person" value="${Number#people}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>person</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop" id="6a31c2cf-5655-4c6b-9981-59bff04d65b2">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Number</dataSourceStep>
+      <targetStep>Request 1</targetStep>
+      <discardResults>false</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>6a31c2cf-5655-4c6b-9981-59bff04d65b2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>
